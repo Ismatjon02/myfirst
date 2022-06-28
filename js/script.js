@@ -1,11 +1,19 @@
-document.querySelector('.tugma').addEventListener('click', function(){
-    var ekran =  document.querySelector('.ekran');
-    console.log (typeof parseInt(ekran. value));
-    ekran.value = parseInt(ekran. value)+1;
-  });
+const colorFunc = () => {
+   var colorPicker = document.getElementById('inputColor').value;
+   document.body.style.backgroundColor = colorPicker;
+  document.getElementById('inputText').value = colorPicker;
+}
 
-  document.querySelector('.nolga').addEventListener('click', function(){
-    document.querySelector('.ekran'). value=0;
+const copy = () => {
+  const hexColor = document.getElementById("inputText")
+  const demo = document.getElementById("demo");
+  navigator.clipboard.writeText(hexColor.value);
+  demo.innerHTML = "Copied"
+  demo.style.opacity = "1"
+}
 
-
-  });
+if("serviceWorker" in navigator) {
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("/serviceWorker.js")
+  })
+}
